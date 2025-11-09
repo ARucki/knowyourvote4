@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KnowYourVote</title>
+<style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f0f4f8; color:#333; }
+    header, footer { background:#2b7a78; color:#fff; padding:1em; text-align:center; }
+    nav { text-align:center; margin:1em 0; }
+    nav a { margin:0 1em; text-decoration:none; color:#17252a; font-weight:bold; cursor:pointer; }
+    main { padding:2em; max-width:900px; margin:auto; }
+    h1, h2, h3 { color:#17252a; }
+    .candidate-list li { margin:0.5em 0; }
+    .candidate-section { display:none; padding:1em 0; border-top:1px solid #ccc; background:#ffffff; margin-bottom:1em; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    .candidate-detail img { max-width:150px; border-radius:50%; display:block; margin-bottom:1em; }
+    form { display:flex; flex-direction:column; max-width:400px; margin:auto; }
+    input, button, textarea { margin:0.5em 0; padding:0.5em; border-radius:4px; border:1px solid #ccc; }
+    button { background:#3aafa9; color:white; border:none; cursor:pointer; }
+    button:hover { background:#2b7a78; }
+    ul.platform, ul.experience, ul.endorsements { margin-left:1.5em; }
+    .edit-profile { display:none; margin-top:1em; padding:1em; border:1px solid #ccc; background:#e0f7f7; border-radius:4px; }
+    footer p { margin:0; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>KnowYourVote</h1>
+    <p>Connecting local voters with local candidates</p>
+</header>
+
+<nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('candidates')">Meet Candidates</a>
+    <a onclick="showSection('signup')">Sign Up</a>
+    <a onclick="showSection('login')">Candidate Login</a>
+</nav>
+
+<main>
+<!-- Home Section -->
+<section id="home-section">
+    <h2>Welcome!</h2>
+    <p>KnowYourVote helps you learn about candidates running for local, municipal, and county offices. Make informed decisions and stay connected with your community!</p>
+</section>
+
+<!-- Candidates List & Profiles -->
+<section id="candidates-section" class="candidate-section">
+    <h2>Candidates</h2>
+    <ul class="candidate-list">
+        <li><a onclick="showCandidate('jordan')">Jordan Smith - City Council</a></li>
+        <li><a onclick="showCandidate('maria')">Maria Lopez - County Commissioner</a></li>
+        <li><a onclick="showCandidate('andre')">Andre Johnson - School Board</a></li>
+    </ul>
+
+    <!-- Jordan Smith Profile -->
+    <div id="jordan" class="candidate-detail candidate-section">
+        <img src="https://via.placeholder.com/150" alt="Jordan Smith">
+        <h3>Jordan Smith</h3>
+        <p><strong>Position:</strong> City Council</p>
+        <h4>Bio:</h4>
+        <p>Jordan Smith has lived in the community for 15 years. A small business owner and active volunteer, Jordan is committed to sustainable development and better public services.</p>
+        <h4>Platform:</h4>
+        <ul class="platform">
+            <li>Improve local public transportation and bike lanes</li>
+            <li>Expand community parks and recreation programs</li>
+            <li>Promote small business growth and local job creation</li>
+        </ul>
+        <h4>Experience:</h4>
+        <ul class="experience">
+            <li>Owner of Smith's Café (10 years)</li>
+            <li>Board member of Community Development Committee</li>
+            <li>City volunteer for local events and programs</li>
+        </ul>
+        <h4>Endorsements:</h4>
+        <ul class="endorsements">
+            <li>Local Chamber of Commerce</li>
+            <li>Neighborhood Association</li>
+        </ul>
+        <p><strong>Contact:</strong> jordan.smith@email.com</p>
+        <div id="edit-jordan" class="edit-profile">
+            <h4>Edit Profile (Mock)</h4>
+            <textarea id="editJordanText" rows="5" style="width:100%"></textarea>
+            <button onclick="saveProfile('jordan')">Save</button>
+        </div>
+    </div>
+
+    <!-- Maria Lopez Profile -->
+    <div id="maria" class="candidate-detail candidate-section">
+        <img src="https://via.placeholder.com/150" alt="Maria Lopez">
+        <h3>Maria Lopez</h3>
+        <p><strong>Position:</strong> County Commissioner</p>
+        <h4>Bio:</h4>
+        <p>Maria Lopez has a background in public health and community development. She has been a tireless advocate for healthcare access and environmental protection.</p>
+        <h4>Platform:</h4>
+        <ul class="platform">
+            <li>Expand access to affordable healthcare</li>
+            <li>Implement environmental sustainability initiatives</li>
+            <li>Enhance public safety and emergency preparedness programs</li>
+        </ul>
+        <h4>Experience:</h4>
+        <ul class="experience">
+            <li>Director of County Health Services</li>
+            <li>Policy advisor for environmental projects</li>
+            <li>Volunteer coordinator for community clinics</li>
+        </ul>
+        <h4>Endorsements:</h4>
+        <ul class="endorsements">
+            <li>County Nurses Association</li>
+            <li>Green Earth Organization</li>
+        </ul>
+        <p><strong>Contact:</strong> maria.lopez@email.com</p>
+        <div id="edit-maria" class="edit-profile">
+            <h4>Edit Profile (Mock)</h4>
+            <textarea id="editMariaText" rows="5" style="width:100%"></textarea>
+            <button onclick="saveProfile('maria')">Save</button>
+        </div>
+    </div>
+
+    <!-- Andre Johnson Profile -->
+    <div id="andre" class="candidate-detail candidate-section">
+        <img src="https://via.placeholder.com/150" alt="Andre Johnson">
+        <h3>Andre Johnson</h3>
+        <p><strong>Position:</strong> School Board</p>
+        <h4>Bio:</h4>
+        <p>Andre Johnson is a former teacher and parent volunteer dedicated to improving education quality and community engagement in schools.</p>
+        <h4>Platform:</h4>
+        <ul class="platform">
+            <li>Increase school resources and technology access</li>
+            <li>Enhance teacher support and training programs</li>
+            <li>Encourage parent and community involvement in education</li>
+        </ul>
+        <h4>Experience:</h4>
+        <ul class="experience">
+            <li>Teacher at Lincoln Elementary (8 years)</li>
+            <li>President of Parent-Teacher Association</li>
+            <li>Volunteer coordinator for after-school programs</li>
+        </ul>
+        <h4>Endorsements:</h4>
+        <ul class="endorsements">
+            <li>Teachers Union</li>
+            <li>Parent Association Council</li>
+        </ul>
+        <p><strong>Contact:</strong> andre.johnson@email.com</p>
+        <div id="edit-andre" class="edit-profile">
+            <h4>Edit Profile (Mock)</h4>
+            <textarea id="editAndreText" rows="5" style="width:100%"></textarea>
+            <button onclick="saveProfile('andre')">Save</button>
+        </div>
+    </div>
+</section>
+
+<!-- Signup Section -->
+<section id="signup-section" class="candidate-section">
+    <h2>Sign Up for Updates</h2>
+    <form id="signupForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <button type="submit">Sign Up</button>
+    </form>
+    <p id="message"></p>
+</section>
+
+<!-- Candidate Login Section -->
+<section id="login-section" class="candidate-section">
+    <h2>Candidate Login (Mock)</h2>
+    <form id="loginForm">
+        <label for="candidateName">Candidate Name:</label>
+        <input type="text" id="candidateName" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p id="loginMessage"></p>
+</section>
+
+</main>
+<footer>
+    <p>&copy; 2025 KnowYourVote</p>
+</footer>
+
+<script>
+    function showSection(section) {
+        document.getElementById('home-section').style.display = section==='home'?'block':'none';
+        document.getElementById('candidates-section').style.display = section==='candidates'?'block':'none';
+        document.getElementById('signup-section').style.display = section==='signup'?'block':'none';
+        document.getElementById('login-section').style.display = section==='login'?'block':'none';
+        document.querySelectorAll('.candidate-detail').forEach(el=>el.style.display='none');
+    }
+
+    function showCandidate(name){
+        document.querySelectorAll('.candidate-detail').forEach(el=>el.style.display='none');
+        document.getElementById(name).style.display='block';
+    }
+
+    // Mock login credentials
+    const candidates = {
+        "Jordan Smith":"pass123",
+        "Maria Lopez":"health456",
+        "Andre Johnson":"school789"
+    };
+
+    document.getElementById('loginForm').addEventListener('submit',function(e){
+        e.preventDefault();
+        const name = document.getElementById('candidateName').value.trim();
+        const pw = document.getElementById('password').value.trim();
+        const loginMsg = document.getElementById('loginMessage');
+
+        if(candidates[name] && candidates[name]===pw){
+            loginMsg.textContent=`Welcome, ${name}! You can now edit your profile below.`;
+            showCandidate(name.toLowerCase().split(' ')[0]);
+            document.getElementById(`edit-${name.toLowerCase().split(' ')[0]}`).style.display='block';
+        } else {
+            loginMsg.textContent="Invalid credentials. Try again.";
+        }
+
+        this.reset();
+    });
+
+    function saveProfile(candidate){
+        const textarea = document.getElementById(`edit${candidate.charAt(0).toUpperCase() + candidate.slice(1)}Text`);
+        if(textarea && textarea.value.trim()!==""){
+            alert(`Profile update for ${candidate} saved (mock).`);
+            textarea.value="";
+        } else {
+            alert("Enter text to save.");
+        }
+    }
+
+    document.getElementById('signupForm').addEventListener('submit',function(e){
+        e.preventDefault();
+        const name=document.getElementById('name').value;
+        const email=document.getElementById('email').value;
+        document.getElementById('message').textContent=`Thanks, ${name}! We'll keep you updated at ${email}.`;
+        this.reset();
+    });
+
+    // Show home section by default
+    showSection('home');
+</script>
+</body>
+</html>
